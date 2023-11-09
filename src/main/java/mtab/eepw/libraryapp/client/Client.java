@@ -1,20 +1,34 @@
-package mtab.eepw.libraryapp.user;
+package mtab.eepw.libraryapp.client;
 
-public class User {
+import jakarta.persistence.*;
+
+@Entity
+@Table
+public class Client {
+    @Id
+    @SequenceGenerator(
+            name = "client_sequence",
+            sequenceName = "client_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "client_sequence"
+    )
     private Long id;
     private String name;
     private String surname;
     private Double charge;
     private String email;
 
-    public User() {
+    public Client() {
     }
 
-    public User(Long id,
-                String name,
-                String surname,
-                Double charge,
-                String email) {
+    public Client(Long id,
+                  String name,
+                  String surname,
+                  Double charge,
+                  String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -22,10 +36,10 @@ public class User {
         this.email = email;
     }
 
-    public User(String name,
-                String surname,
-                Double charge,
-                String email) {
+    public Client(String name,
+                  String surname,
+                  Double charge,
+                  String email) {
         this.name = name;
         this.surname = surname;
         this.charge = charge;
