@@ -1,9 +1,21 @@
 package mtab.eepw.libraryapp.client;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import mtab.eepw.libraryapp.loan.Loan;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client {
     @Id
     @SequenceGenerator(
@@ -20,21 +32,8 @@ public class Client {
     private String surname;
     private Double charge;
     private String email;
-
-    public Client() {
-    }
-
-    public Client(Long id,
-                  String name,
-                  String surname,
-                  Double charge,
-                  String email) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.charge = charge;
-        this.email = email;
-    }
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Loan> loan = new HashSet<>();
 
     public Client(String name,
                   String surname,
@@ -46,43 +45,15 @@ public class Client {
         this.email = email;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
+    public Client(Long id,
+                  String name,
+                  String surname,
+                  Double charge,
+                  String email) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public Double getCharge() {
-        return charge;
-    }
-
-    public void setCharge(Double charge) {
         this.charge = charge;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
     }
 
