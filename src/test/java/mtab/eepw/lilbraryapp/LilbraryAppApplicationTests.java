@@ -1,10 +1,10 @@
-package mtab.eepw.libraryapp;
+package mtab.eepw.lilbraryapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LibraryAppApplicationTests {
+class LilbraryAppApplicationTests {
 
 	@Test
 	void contextLoads() {
