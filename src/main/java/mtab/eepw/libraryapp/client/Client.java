@@ -1,10 +1,7 @@
 package mtab.eepw.libraryapp.client;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import mtab.eepw.libraryapp.loan.Loan;
 
 import java.util.HashSet;
@@ -16,6 +13,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder(toBuilder = true)
 public class Client {
     @Id
     @SequenceGenerator(

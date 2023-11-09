@@ -21,13 +21,24 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public void addNewClient(Client client) {
+    public Client getClientById(Long clientId) {
+        return clientRepository.getById(clientId);
+    }
+
+    public Client getClientByEmail(String email) {
+        return clientRepository
+                .findClientByEmail(email)
+                .orElseThrow(() -> new ClientNotFoundException("Client has not been found!"));
+    }
+
+    public Client addNewClient(Client client) {
         Optional<Client> clientOptional = clientRepository
                 .findClientByEmail(client.getEmail());
         if (clientOptional.isPresent()) {
             throw new IllegalStateException("email taken");
         }
         clientRepository.save(client);
+        return client;
     }
 
     public void deleteClient(Long clientId) {
@@ -39,7 +50,7 @@ public class ClientService {
     }
 
     @Transactional
-    public void updateClient(Long clientId,
+    public Client updateClient(Long clientId,
                              String name,
                              String surname,
                              String email,
@@ -70,5 +81,6 @@ public class ClientService {
             client.setCharge(charge);
         }
         clientRepository.save(client);
+        return client;
     }
 }
