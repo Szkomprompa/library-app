@@ -1,9 +1,12 @@
 package mtab.eepw.libraryapp.client;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.rmi.StubNotFoundException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -24,6 +27,48 @@ public class ClientService {
                 .findClientByEmail(client.getEmail());
         if (clientOptional.isPresent()) {
             throw new IllegalStateException("email taken");
+        }
+        clientRepository.save(client);
+    }
+
+    public void deleteClient(Long clientId) {
+        boolean exists = clientRepository.existsById(clientId);
+        if (!exists) {
+            throw new IllegalStateException("client with id " + clientId + " doesn't exists");
+        }
+        clientRepository.deleteById(clientId);
+    }
+
+    @Transactional
+    public void updateClient(Long clientId,
+                             String name,
+                             String surname,
+                             String email,
+                             Double charge) {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new IllegalStateException("client with id " + clientId + " doesn't exists"));
+
+        if (name != null &&
+                !name.isEmpty() &&
+                !Objects.equals(client.getName(), name)) {
+            client.setName(name);
+        }
+
+        if (surname != null &&
+                !surname.isEmpty() &&
+                !Objects.equals(client.getSurname(), surname)) {
+            client.setSurname(surname);
+        }
+
+        if (email != null &&
+                !email.isEmpty() &&
+                !Objects.equals(client.getEmail(), email)) {
+            client.setEmail(email);
+        }
+
+        if (charge != null &&
+                !Objects.equals(client.getCharge(), charge)) {
+            client.setCharge(charge);
         }
         clientRepository.save(client);
     }
