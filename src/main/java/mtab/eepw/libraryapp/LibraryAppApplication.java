@@ -1,13 +1,13 @@
-package mtab.eepw.lilbraryapp;
+package mtab.eepw.libraryapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LilbraryAppApplication {
+public class LibraryAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LilbraryAppApplication.class, args);
+		SpringApplication.run(LibraryAppApplication.class, args);
 	}
 
 }
