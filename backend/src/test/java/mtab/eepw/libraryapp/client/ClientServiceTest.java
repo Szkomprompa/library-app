@@ -165,7 +165,7 @@ public class ClientServiceTest {
         Client client = makeClient().toBuilder()
                 .id(null).build();
         Client dbClient = client.toBuilder()
-                .id(5L).build();
+                .id(1L).build();
         when(clientRepository.save(client)).thenReturn(dbClient);
 
         //when
@@ -228,7 +228,10 @@ public class ClientServiceTest {
 
         //when
         ThrowingCallable updateClientExecutable = () -> clientService.updateClient(notExistingClient.getId(),
-                notExistingClient.getName(), notExistingClient.getSurname(), notExistingClient.getEmail(), notExistingClient.getCharge());
+                notExistingClient.getName(),
+                notExistingClient.getSurname(),
+                notExistingClient.getEmail(),
+                notExistingClient.getCharge());
 
         //then
         assertThatThrownBy(updateClientExecutable)
@@ -245,7 +248,10 @@ public class ClientServiceTest {
 
         //when
         ThrowingCallable updateClientExecutable = () -> clientService.updateClient(nullClient.getId(),
-                nullClient.getName(), nullClient.getSurname(), nullClient.getEmail(), nullClient.getCharge());
+                nullClient.getName(),
+                nullClient.getSurname(),
+                nullClient.getEmail(),
+                nullClient.getCharge());
 
         //then
         assertThatThrownBy(updateClientExecutable)
