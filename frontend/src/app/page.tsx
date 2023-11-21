@@ -1,95 +1,226 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
+import * as React from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import Navigator from './Navigator';
+import Content from './Content';
+import Header from './Header';
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+function Copyright() {
+    return (
+        <Typography variant="body2" color="text.secondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://mui.com/">
+                Your Website
+            </Link>{' '}
+            {new Date().getFullYear()}.
+        </Typography>
+    );
+}
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+// const { palette } = createTheme();
+// const theme = createTheme({
+//     palette: {
+//         primary: {
+//             main: '#272b82',
+//         },
+//         secondary: {
+//             main: '#00aaea',
+//         },
+//         gray: {
+//             main: '#fffffc',
+//         },
+//     },
+// });
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+let theme = createTheme({
+    palette: {
+        primary: {
+            light: '#63ccff',
+            main: '#009be5',
+            dark: '#006db3',
+        },
+    },
+    typography: {
+        h5: {
+            fontWeight: 500,
+            fontSize: 26,
+            letterSpacing: 0.5,
+        },
+    },
+    shape: {
+        borderRadius: 8,
+    },
+    components: {
+        MuiTab: {
+            defaultProps: {
+                disableRipple: true,
+            },
+        },
+    },
+    mixins: {
+        toolbar: {
+            minHeight: 48,
+        },
+    },
+});
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+theme = {
+    ...theme,
+    components: {
+        MuiDrawer: {
+            styleOverrides: {
+                paper: {
+                    backgroundColor: '#081627',
+                },
+            },
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none',
+                },
+                contained: {
+                    boxShadow: 'none',
+                    '&:active': {
+                        boxShadow: 'none',
+                    },
+                },
+            },
+        },
+        MuiTabs: {
+            styleOverrides: {
+                root: {
+                    marginLeft: theme.spacing(1),
+                },
+                indicator: {
+                    height: 3,
+                    borderTopLeftRadius: 3,
+                    borderTopRightRadius: 3,
+                    backgroundColor: theme.palette.common.white,
+                },
+            },
+        },
+        MuiTab: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none',
+                    margin: '0 16px',
+                    minWidth: 0,
+                    padding: 0,
+                    [theme.breakpoints.up('md')]: {
+                        padding: 0,
+                        minWidth: 0,
+                    },
+                },
+            },
+        },
+        MuiIconButton: {
+            styleOverrides: {
+                root: {
+                    padding: theme.spacing(1),
+                },
+            },
+        },
+        MuiTooltip: {
+            styleOverrides: {
+                tooltip: {
+                    borderRadius: 4,
+                },
+            },
+        },
+        MuiDivider: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: 'rgb(255,255,255,0.15)',
+                },
+            },
+        },
+        MuiListItemButton: {
+            styleOverrides: {
+                root: {
+                    '&.Mui-selected': {
+                        color: '#4fc3f7',
+                    },
+                },
+            },
+        },
+        MuiListItemText: {
+            styleOverrides: {
+                primary: {
+                    fontSize: 14,
+                    fontWeight: theme.typography.fontWeightMedium,
+                },
+            },
+        },
+        MuiListItemIcon: {
+            styleOverrides: {
+                root: {
+                    color: 'inherit',
+                    minWidth: 'auto',
+                    marginRight: theme.spacing(2),
+                    '& svg': {
+                        fontSize: 20,
+                    },
+                },
+            },
+        },
+        MuiAvatar: {
+            styleOverrides: {
+                root: {
+                    width: 32,
+                    height: 32,
+                },
+            },
+        },
+    },
+};
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+const drawerWidth = 256;
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+export default function Librarian() {
+    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
+    return (
+        <ThemeProvider theme={theme}>
+            <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+                <CssBaseline />
+                <Box
+                    component="nav"
+                    sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+                >
+                    {isSmUp ? null : (
+                        <Navigator
+                            PaperProps={{ style: { width: drawerWidth } }}
+                            variant="temporary"
+                            open={mobileOpen}
+                            onClose={handleDrawerToggle}
+                        />
+                    )}
+                    <Navigator
+                        PaperProps={{ style: { width: drawerWidth } }}
+                        sx={{ display: { sm: 'block', xs: 'none' } }}
+                    />
+                </Box>
+                <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <Header onDrawerToggle={handleDrawerToggle} />
+                    <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
+                        <Content />
+                    </Box>
+                    <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1' }}>
+                        <Copyright />
+                    </Box>
+                </Box>
+            </Box>
+        </ThemeProvider>
+    );
 }
