@@ -51,11 +51,9 @@ export default function SignUp() {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} alt="Bibliosfera" src="./bibliosferaBackGround.jpg"/>
                     <Typography component="h1" variant="h5">
-                        Sign up
+                        Zarejestruj się
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
@@ -66,7 +64,7 @@ export default function SignUp() {
                                     required
                                     fullWidth
                                     id="firstName"
-                                    label="First Name"
+                                    label="Imię"
                                     autoFocus
                                 />
                             </Grid>
@@ -75,7 +73,7 @@ export default function SignUp() {
                                     required
                                     fullWidth
                                     id="lastName"
-                                    label="Last Name"
+                                    label="Nazwisko"
                                     name="lastName"
                                     autoComplete="family-name"
                                 />
@@ -85,7 +83,7 @@ export default function SignUp() {
                                     required
                                     fullWidth
                                     id="email"
-                                    label="Email Address"
+                                    label="Adres email"
                                     name="email"
                                     autoComplete="email"
                                 />
@@ -95,7 +93,7 @@ export default function SignUp() {
                                     required
                                     fullWidth
                                     name="password"
-                                    label="Password"
+                                    label="Hasło"
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
@@ -119,7 +117,7 @@ export default function SignUp() {
                         <Grid container justifyContent="flex-end">
                             <Grid item>
                                 <Link href="#" variant="body2">
-                                    Already have an account? Sign in
+                                    Masz już konto? Zaloguj się
                                 </Link>
                             </Grid>
                         </Grid>

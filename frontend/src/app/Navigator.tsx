@@ -14,6 +14,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Link from "@mui/material/Link";
 
 const categories = [
     {
@@ -22,18 +23,19 @@ const categories = [
             {
                 id: 'Książki',
                 icon: <MenuBookIcon />,
+                link: '/SignIn',
                 active: true,
             },
-            { id: 'Aktywne wypożyczenia', icon: <AutoStoriesIcon /> },
-            { id: 'Historia wypożyczeń', icon: <AccessTimeFilledIcon /> },
-            { id: 'Należności', icon: <AccountBalanceWalletIcon /> }
+            { id: 'Aktywne wypożyczenia', icon: <AutoStoriesIcon />, link: '/SignIn' },
+            { id: 'Historia wypożyczeń', icon: <AccessTimeFilledIcon />, link: '/SignIn' },
+            { id: 'Należności', icon: <AccountBalanceWalletIcon />, link: '/SignIn' }
         ],
     },
     {
         id: 'Użytkownik',
         children: [
-            { id: 'Ustawienia', icon: <SettingsIcon /> },
-            { id: 'Wyloguj', icon: <LogoutIcon /> }
+            { id: 'Ustawienia', icon: <SettingsIcon />, link: '/SignIn' },
+            { id: 'Wyloguj', icon: <LogoutIcon />, link: '/signIn' }
         ],
     },
 ];
@@ -73,12 +75,14 @@ export default function Navigator(props: DrawerProps) {
                         <ListItem sx={{ py: 2, px: 3 }}>
                             <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
                         </ListItem>
-                        {children.map(({ id: childId, icon, active }) => (
+                        {children.map(({ id: childId, icon, link, active }) => (
                             <ListItem disablePadding key={childId}>
-                                <ListItemButton selected={active} sx={item}>
-                                    <ListItemIcon>{icon}</ListItemIcon>
-                                    <ListItemText>{childId}</ListItemText>
-                                </ListItemButton>
+                                <Link href={link}>
+                                    <ListItemButton selected={active} sx={item}>
+                                        <ListItemIcon>{icon}</ListItemIcon>
+                                        <ListItemText>{childId}</ListItemText>
+                                    </ListItemButton>
+                                </Link>
                             </ListItem>
                         ))}
                         <Divider sx={{ mt: 2 }} />

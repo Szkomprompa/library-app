@@ -7,7 +7,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Librarian',
+  title: 'Bibliosfera',
   description: 'Library app',
 }
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className={inter.className}>
       {/*<ThemeProvider theme={theme}>*/}
       {/*  {children}*/}

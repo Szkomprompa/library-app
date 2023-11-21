@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -51,11 +52,9 @@ export default function SignIn() {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+                    <Avatar sx={{ m: 1}} alt="Bibliosfera" src=""/>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        Zaloguj się
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
@@ -63,7 +62,7 @@ export default function SignIn() {
                             required
                             fullWidth
                             id="email"
-                            label="Email Address"
+                            label="Adres email"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -73,14 +72,14 @@ export default function SignIn() {
                             required
                             fullWidth
                             name="password"
-                            label="Password"
+                            label="Hasło"
                             type="password"
                             id="password"
                             autoComplete="current-password"
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
+                            label="Zapamiętaj mnie"
                         />
                         <Button
                             type="submit"
@@ -93,12 +92,12 @@ export default function SignIn() {
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
-                                    Forgot password?
+                                    Zapomniałeś hasła?
                                 </Link>
                             </Grid>
                             <Grid item>
                                 <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                    {"Nie masz konta? Zarejestruj się"}
                                 </Link>
                             </Grid>
                         </Grid>
