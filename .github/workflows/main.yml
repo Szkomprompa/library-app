@@ -1,0 +1,41 @@
+name: Build and Deploy
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: Build with Maven
+      run: mvn clean install
+
+    - name: Deploy to Development
+      if: success()
+      run: |
+        # Add your deployment script or commands here
+        # This could involve pushing to Azure or any other container registry
+        # Example: az container create ...
+
+    - name: Deploy to Production
+      if: success() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        # Add your production deployment script or commands here
+        # Example: az container create ...
+
+    - name: Display Version
+      run: |
+        echo "Version: v${{ github.run_number }}" > version.txt
+        cat version.txt
