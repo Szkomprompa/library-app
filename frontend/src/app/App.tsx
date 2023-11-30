@@ -1,19 +1,18 @@
-'use client';
-import * as React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import Navigator from './Navigator';
-import Books from './Books';
-import Active from './Active';
-import History from './History';
-import Charge from './Charge';
-import Settings from './Settings'
-import Header from './Header';
-import { Route, Routes } from 'react-router-dom';
+import * as React from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Navigator from "@/app/Navigator";
+import Header from "@/app/Header";
+import {Route, Routes} from "react-router-dom";
+import Books from "@/app/Books";
+import Active from "@/app/Active";
+import History from "@/app/History";
+import Charge from "@/app/Charge";
+import Settings from "@/app/Settings";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
 
 function Copyright() {
     return (
@@ -187,7 +186,7 @@ theme = {
 
 const drawerWidth = 256;
 
-export default function Librarian() {
+export default function App() {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -219,14 +218,13 @@ export default function Librarian() {
                 <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <Header onDrawerToggle={handleDrawerToggle} />
                     <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
-                        <Books />
-                        {/*<Routes>*/}
-                        {/*    <Route path="/books" element={<Books />} />*/}
-                        {/*    <Route path="/active" element={<Active />} />*/}
-                        {/*    <Route path="/history" element={<History />} />*/}
-                        {/*    <Route path="/charge" element={<Charge />} />*/}
-                        {/*    <Route path="/settings" element={<Settings />} />*/}
-                        {/*</Routes>*/}
+                        <Routes>
+                            <Route path="/books" element={<Books />} />
+                            <Route path="/active" element={<Active />} />
+                            <Route path="/history" element={<History />} />
+                            <Route path="/charge" element={<Charge />} />
+                            <Route path="/settings" element={<Settings />} />
+                        </Routes>
                     </Box>
                     <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1' }}>
                         <Copyright />

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Divider from '@mui/material/Divider';
-import Drawer, { DrawerProps } from '@mui/material/Drawer';
+import Drawer, {DrawerProps} from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
@@ -14,7 +14,6 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Link from "@mui/material/Link";
 
 const categories = [
     {
@@ -22,20 +21,20 @@ const categories = [
         children: [
             {
                 id: 'Książki',
-                icon: <MenuBookIcon />,
-                link: '/SignIn',
+                icon: <MenuBookIcon/>,
+                link: '/books',
                 active: true,
             },
-            { id: 'Aktywne wypożyczenia', icon: <AutoStoriesIcon />, link: '/SignIn' },
-            { id: 'Historia wypożyczeń', icon: <AccessTimeFilledIcon />, link: '/SignIn' },
-            { id: 'Należności', icon: <AccountBalanceWalletIcon />, link: '/SignIn' }
+            {id: 'Aktywne wypożyczenia', icon: <AutoStoriesIcon/>, link: '/active'},
+            {id: 'Historia wypożyczeń', icon: <AccessTimeFilledIcon/>, link: '/history'},
+            {id: 'Należności', icon: <AccountBalanceWalletIcon/>, link: '/charge'}
         ],
     },
     {
         id: 'Użytkownik',
         children: [
-            { id: 'Ustawienia', icon: <SettingsIcon />, link: '/SignIn' },
-            { id: 'Wyloguj', icon: <LogoutIcon />, link: '/signIn' }
+            {id: 'Ustawienia', icon: <SettingsIcon/>, link: '/settings'},
+            {id: 'Wyloguj', icon: <LogoutIcon/>, link: '/signIn'}
         ],
     },
 ];
@@ -56,36 +55,34 @@ const itemCategory = {
 };
 
 export default function Navigator(props: DrawerProps) {
-    const { ...other } = props;
+    const {...other} = props;
 
     return (
         <Drawer variant="permanent" {...other}>
             <List disablePadding>
-                <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
+                <ListItem sx={{...item, ...itemCategory, fontSize: 22, color: '#fff'}}>
                     Librarian
                 </ListItem>
-                <ListItem sx={{ ...item, ...itemCategory }}>
+                <ListItem sx={{...item, ...itemCategory}}>
                     <ListItemIcon>
-                        <HomeIcon />
+                        <HomeIcon/>
                     </ListItemIcon>
                     <ListItemText>Menu Główne</ListItemText>
                 </ListItem>
-                {categories.map(({ id, children }) => (
-                    <Box key={id} sx={{ bgcolor: '#101F33' }}>
-                        <ListItem sx={{ py: 2, px: 3 }}>
-                            <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
+                {categories.map(({id, children}) => (
+                    <Box key={id} sx={{bgcolor: '#101F33'}}>
+                        <ListItem sx={{py: 2, px: 3}}>
+                            <ListItemText sx={{color: '#fff'}}>{id}</ListItemText>
                         </ListItem>
-                        {children.map(({ id: childId, icon, link, active }) => (
+                        {children.map(({id: childId, icon, link, active}) => (
                             <ListItem disablePadding key={childId}>
-                                <Link href={link}>
-                                    <ListItemButton selected={active} sx={item}>
-                                        <ListItemIcon>{icon}</ListItemIcon>
-                                        <ListItemText>{childId}</ListItemText>
-                                    </ListItemButton>
-                                </Link>
+                                <ListItemButton selected={active} sx={item} href={link}>
+                                    <ListItemIcon>{icon}</ListItemIcon>
+                                    <ListItemText>{childId}</ListItemText>
+                                </ListItemButton>
                             </ListItem>
                         ))}
-                        <Divider sx={{ mt: 2 }} />
+                        <Divider sx={{mt: 2}}/>
                     </Box>
                 ))}
             </List>

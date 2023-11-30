@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -8,7 +9,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -29,7 +29,7 @@ function Copyright(props: any) {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+export default function Page() {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -51,6 +51,9 @@ export default function SignUp() {
                         alignItems: 'center',
                     }}
                 >
+                    <Typography component="h1" variant="h2">
+                        Bibliosfera
+                    </Typography>
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} alt="Bibliosfera" src="./bibliosferaBackGround.jpg"/>
                     <Typography component="h1" variant="h5">
                         Zarejestruj się
@@ -101,8 +104,9 @@ export default function SignUp() {
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel
+                                    required
                                     control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
+                                    label="Akceptuję regulamin serwisu Bibliosfera."
                                 />
                             </Grid>
                         </Grid>
@@ -111,12 +115,13 @@ export default function SignUp() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            href="../"
                         >
-                            Sign Up
+                            Zarejestruj się
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="../signIn" variant="body2">
                                     Masz już konto? Zaloguj się
                                 </Link>
                             </Grid>

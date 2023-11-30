@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 // import theme from './theme';
 import './globals.css'
 // import {ThemeProvider} from "@mui/material/styles";
+// import {BrowserRouter} from 'react-router-dom';
+// import React from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +24,9 @@ export default function RootLayout({
       {/*<ThemeProvider theme={theme}>*/}
       {/*  {children}*/}
       {/*</ThemeProvider>*/}
+      {/*    <BrowserRouter>*/}
+      {/*        {children}*/}
+      {/*    </BrowserRouter>*/}
       {children}
       </body>
     </html>
