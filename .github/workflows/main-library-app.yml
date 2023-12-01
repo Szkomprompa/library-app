@@ -39,7 +39,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        run: mvn clean install --file /library-app/backed/pom.xml
+        run: mvn clean install --file ../backed/pom.xml
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
