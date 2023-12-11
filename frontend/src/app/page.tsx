@@ -1,19 +1,25 @@
 'use client';
 import * as React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Navigator from './Navigator';
-import Books from './Books';
-import Active from './Active';
-import History from './History';
-import Charge from './Charge';
-import Settings from './Settings'
+import Books from './Books/Books';
+import Active from './Active/Active';
+import History from './History/History';
+import Charge from './Charge/Charge';
+import Settings from './Settings/Settings'
 import Header from './Header';
-import { Route, Routes } from 'react-router-dom';
+import BooksHeader from './Books/Header';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import ActiveHeader from "@/app/Active/Header";
+import HistoryHeader from "@/app/History/Header";
+import ChargeHeader from "@/app/Charge/Header";
+import SettingsHeader from "@/app/Settings/Header";
+import MainPage from "@/app/MainPage";
 
 function Copyright() {
     return (
@@ -196,43 +202,52 @@ export default function Librarian() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-                <CssBaseline />
-                <Box
-                    component="nav"
-                    sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-                >
-                    {isSmUp ? null : (
+        <Router>
+            <ThemeProvider theme={theme}>
+                <Box sx={{display: 'flex', minHeight: '100vh'}}>
+                    <CssBaseline/>
+                    <Box
+                        component="nav"
+                        sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}
+                    >
+                        {isSmUp ? null : (
+                            <Navigator
+                                PaperProps={{style: {width: drawerWidth}}}
+                                variant="temporary"
+                                open={mobileOpen}
+                                onClose={handleDrawerToggle}
+                            />
+                        )}
                         <Navigator
-                            PaperProps={{ style: { width: drawerWidth } }}
-                            variant="temporary"
-                            open={mobileOpen}
-                            onClose={handleDrawerToggle}
+                            PaperProps={{style: {width: drawerWidth}}}
+                            sx={{display: {sm: 'block', xs: 'none'}}}
                         />
-                    )}
-                    <Navigator
-                        PaperProps={{ style: { width: drawerWidth } }}
-                        sx={{ display: { sm: 'block', xs: 'none' } }}
-                    />
-                </Box>
-                <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <Header onDrawerToggle={handleDrawerToggle} />
-                    <Box component="main" sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
-                        <Books />
-                        {/*<Routes>*/}
-                        {/*    <Route path="/books" element={<Books />} />*/}
-                        {/*    <Route path="/active" element={<Active />} />*/}
-                        {/*    <Route path="/history" element={<History />} />*/}
-                        {/*    <Route path="/charge" element={<Charge />} />*/}
-                        {/*    <Route path="/settings" element={<Settings />} />*/}
-                        {/*</Routes>*/}
                     </Box>
-                    <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1' }}>
-                        <Copyright />
+                    <Box sx={{flex: 1, display: 'flex', flexDirection: 'column'}}>
+                        <Routes>
+                            <Route path="/books" element={<BooksHeader onDrawerToggle={handleDrawerToggle} />} />
+                            <Route path="/active" element={<ActiveHeader onDrawerToggle={handleDrawerToggle} />} />
+                            <Route path="/history" element={<HistoryHeader onDrawerToggle={handleDrawerToggle} />} />
+                            <Route path="/charge" element={<ChargeHeader onDrawerToggle={handleDrawerToggle} />} />
+                            <Route path="/settings" element={<SettingsHeader onDrawerToggle={handleDrawerToggle} />} />
+                        </Routes>
+                        {/*<Header onDrawerToggle={handleDrawerToggle}/>*/}
+                        <Box component="main" sx={{flex: 1, py: 6, px: 4, bgcolor: '#eaeff1'}}>
+                            <Routes>
+                                <Route path="/" element={<MainPage />} />
+                                <Route path="/books" element={<Books />} />
+                                <Route path="/active" element={<Active />} />
+                                <Route path="/history" element={<History />} />
+                                <Route path="/charge" element={<Charge />} />
+                                <Route path="/settings" element={<Settings />} />
+                            </Routes>
+                        </Box>
+                        <Box component="footer" sx={{p: 2, bgcolor: '#eaeff1'}}>
+                            <Copyright/>
+                        </Box>
                     </Box>
                 </Box>
-            </Box>
-        </ThemeProvider>
+            </ThemeProvider>
+        </Router>
     );
 }

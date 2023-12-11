@@ -14,6 +14,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {Link} from 'react-router-dom';
 
 const categories = [
     {
@@ -23,18 +24,18 @@ const categories = [
                 id: 'Książki',
                 icon: <MenuBookIcon/>,
                 link: '/books',
-                active: true,
+                active: false
             },
-            {id: 'Aktywne wypożyczenia', icon: <AutoStoriesIcon/>, link: '/active'},
-            {id: 'Historia wypożyczeń', icon: <AccessTimeFilledIcon/>, link: '/history'},
-            {id: 'Należności', icon: <AccountBalanceWalletIcon/>, link: '/charge'}
+            {id: 'Aktywne wypożyczenia', icon: <AutoStoriesIcon/>, link: '/active', active: false},
+            {id: 'Historia wypożyczeń', icon: <AccessTimeFilledIcon/>, link: '/history', active: false},
+            {id: 'Należności', icon: <AccountBalanceWalletIcon/>, link: '/charge', active: false}
         ],
     },
     {
         id: 'Użytkownik',
         children: [
-            {id: 'Ustawienia', icon: <SettingsIcon/>, link: '/settings'},
-            {id: 'Wyloguj', icon: <LogoutIcon/>, link: '/signIn'}
+            {id: 'Ustawienia', icon: <SettingsIcon/>, link: '/settings', active: false},
+            {id: 'Wyloguj', icon: <LogoutIcon/>, link: '/signIn', active: false}
         ],
     },
 ];
@@ -61,9 +62,9 @@ export default function Navigator(props: DrawerProps) {
         <Drawer variant="permanent" {...other}>
             <List disablePadding>
                 <ListItem sx={{...item, ...itemCategory, fontSize: 22, color: '#fff'}}>
-                    Librarian
+                    Bibliosfera
                 </ListItem>
-                <ListItem sx={{...item, ...itemCategory}}>
+                <ListItem sx={{...item, ...itemCategory}} component={Link} to={'/'}>
                     <ListItemIcon>
                         <HomeIcon/>
                     </ListItemIcon>
@@ -76,7 +77,7 @@ export default function Navigator(props: DrawerProps) {
                         </ListItem>
                         {children.map(({id: childId, icon, link, active}) => (
                             <ListItem disablePadding key={childId}>
-                                <ListItemButton selected={active} sx={item} href={link}>
+                                <ListItemButton selected={active} sx={item} component={Link} to={link}>
                                     <ListItemIcon>{icon}</ListItemIcon>
                                     <ListItemText>{childId}</ListItemText>
                                 </ListItemButton>

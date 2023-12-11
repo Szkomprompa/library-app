@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 // import theme from './theme';
 import './globals.css'
 // import {ThemeProvider} from "@mui/material/styles";
-// import {BrowserRouter} from 'react-router-dom';
+// import {BrowserRouter as Router} from 'react-router-dom';
 // import React from "react";
 
 const inter = Inter({ subsets: ['latin'] })

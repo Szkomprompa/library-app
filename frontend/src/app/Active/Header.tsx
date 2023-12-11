@@ -20,7 +20,7 @@ interface HeaderProps {
     onDrawerToggle: () => void;
 }
 
-export default function Header(props: HeaderProps) {
+export default function ActiveHeader(props: HeaderProps) {
     const { onDrawerToggle } = props;
 
     return (
@@ -39,23 +39,6 @@ export default function Header(props: HeaderProps) {
                             </IconButton>
                         </Grid>
                         <Grid item xs />
-                        {/*<Grid item>*/}
-                        {/*    <Link*/}
-                        {/*        href="/"*/}
-                        {/*        variant="body2"*/}
-                        {/*        sx={{*/}
-                        {/*            textDecoration: 'none',*/}
-                        {/*            color: lightColor,*/}
-                        {/*            '&:hover': {*/}
-                        {/*                color: 'common.white',*/}
-                        {/*            },*/}
-                        {/*        }}*/}
-                        {/*        rel="noopener noreferrer"*/}
-                        {/*        target="_blank"*/}
-                        {/*    >*/}
-                        {/*        Go to docs*/}
-                        {/*    </Link>*/}
-                        {/*</Grid>*/}
                         <Grid item>
                             <Tooltip title="Powiadomienia">
                                 <IconButton color="inherit">
@@ -63,11 +46,6 @@ export default function Header(props: HeaderProps) {
                                 </IconButton>
                             </Tooltip>
                         </Grid>
-                        {/*<Grid item>*/}
-                        {/*    <IconButton color="inherit" sx={{ p: 0.5 }}>*/}
-                        {/*        <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />*/}
-                        {/*    </IconButton>*/}
-                        {/*</Grid>*/}
                     </Grid>
                 </Toolbar>
             </AppBar>
@@ -82,19 +60,9 @@ export default function Header(props: HeaderProps) {
                     <Grid container alignItems="center" spacing={1}>
                         <Grid item xs>
                             <Typography color="inherit" variant="h5" component="h1">
-                                Menu główne
+                                Aktywne wypożyczenia
                             </Typography>
                         </Grid>
-                        {/*<Grid item>*/}
-                        {/*    <Button*/}
-                        {/*        sx={{ borderColor: lightColor }}*/}
-                        {/*        variant="outlined"*/}
-                        {/*        color="inherit"*/}
-                        {/*        size="small"*/}
-                        {/*    >*/}
-                        {/*        Web setup*/}
-                        {/*    </Button>*/}
-                        {/*</Grid>*/}
                         <Grid item>
                             <Tooltip title="Pomoc">
                                 <IconButton color="inherit">
@@ -105,14 +73,6 @@ export default function Header(props: HeaderProps) {
                     </Grid>
                 </Toolbar>
             </AppBar>
-            {/*<AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>*/}
-            {/*    <Tabs value={0} textColor="inherit">*/}
-            {/*        <Tab label="Users" />*/}
-            {/*        <Tab label="Sign-in method" />*/}
-            {/*        <Tab label="Templates" />*/}
-            {/*        <Tab label="Usage" />*/}
-            {/*    </Tabs>*/}
-            {/*</AppBar>*/}
         </React.Fragment>
     );
 }

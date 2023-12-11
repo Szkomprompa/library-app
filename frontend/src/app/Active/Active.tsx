@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
-export default function History() {
+export default function Active() {
     return (
         <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden' }}>
             <AppBar
@@ -27,7 +27,7 @@ export default function History() {
                         <Grid item xs>
                             <TextField
                                 fullWidth
-                                placeholder="Wyszukaj po tytule, kategorii, autorze, numerze ISBN..."
+                                placeholder="Aktywne wypożyczenia"
                                 InputProps={{
                                     disableUnderline: true,
                                     sx: { fontSize: 'default' },
@@ -49,7 +49,7 @@ export default function History() {
                 </Toolbar>
             </AppBar>
             <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-                Nie znaleziono książek pasujących do podanych kryteriów.
+                Nie znaleziono aktualnie wypożyczonych książek pasujących do podanych kryteriów.
             </Typography>
         </Paper>
     );

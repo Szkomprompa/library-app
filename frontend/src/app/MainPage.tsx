@@ -27,7 +27,7 @@ export default function Active() {
                         <Grid item xs>
                             <TextField
                                 fullWidth
-                                placeholder="Wyszukaj po tytule, kategorii, autorze, numerze ISBN..."
+                                placeholder="Aktywne wypożyczenia"
                                 InputProps={{
                                     disableUnderline: true,
                                     sx: { fontSize: 'default' },
@@ -36,9 +36,6 @@ export default function Active() {
                             />
                         </Grid>
                         <Grid item>
-                            {/*<Button variant="contained" sx={{ mr: 1 }}>*/}
-                            {/*    Do zmiany*/}
-                            {/*</Button>*/}
                             <Tooltip title="Załaduj ponownie">
                                 <IconButton>
                                     <RefreshIcon color="inherit" sx={{ display: 'block' }} />
@@ -49,7 +46,7 @@ export default function Active() {
                 </Toolbar>
             </AppBar>
             <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-                Nie znaleziono książek pasujących do podanych kryteriów.
+                Nie
             </Typography>
         </Paper>
     );
