@@ -15,6 +15,7 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from 'react-router-dom';
+// import Link from "@mui/material/Link";
 
 const categories = [
     {
@@ -65,6 +66,7 @@ export default function Navigator(props: DrawerProps) {
                     Bibliosfera
                 </ListItem>
                 <ListItem sx={{...item, ...itemCategory}} component={Link} to={'/'}>
+                {/*<ListItem sx={{...item, ...itemCategory}}>*/}
                     <ListItemIcon>
                         <HomeIcon/>
                     </ListItemIcon>
@@ -77,6 +79,12 @@ export default function Navigator(props: DrawerProps) {
                         </ListItem>
                         {children.map(({id: childId, icon, link, active}) => (
                             <ListItem disablePadding key={childId}>
+                                {/*<Link href={link}>*/}
+                                {/*    <ListItemButton selected={active} sx={item}>*/}
+                                {/*        <ListItemIcon>{icon}</ListItemIcon>*/}
+                                {/*        <ListItemText>{childId}</ListItemText>*/}
+                                {/*    </ListItemButton>*/}
+                                {/*</Link>*/}
                                 <ListItemButton selected={active} sx={item} component={Link} to={link}>
                                     <ListItemIcon>{icon}</ListItemIcon>
                                     <ListItemText>{childId}</ListItemText>
