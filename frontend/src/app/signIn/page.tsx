@@ -68,6 +68,9 @@ export default function SignIn() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            // error
+                            // id="outlined-error-helper-text"
+                            // helperText="Błędny adres email lub hasło."
                         />
                         <TextField
                             margin="normal"
@@ -79,10 +82,10 @@ export default function SignIn() {
                             id="password"
                             autoComplete="current-password"
                         />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Zapamiętaj mnie"
-                        />
+                        {/*<FormControlLabel*/}
+                        {/*    control={<Checkbox value="remember" color="primary" />}*/}
+                        {/*    label="Zapamiętaj mnie"*/}
+                        {/*/>*/}
                         <Button
                             type="submit"
                             fullWidth

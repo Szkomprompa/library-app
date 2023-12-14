@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {FormControl, FormHelperText} from "@mui/material";
 
 function Copyright(props: any) {
     return (
@@ -89,6 +90,9 @@ export default function Page() {
                                     label="Adres email"
                                     name="email"
                                     autoComplete="email"
+                                    // error
+                                    // id="outlined-error-helper-text"
+                                    // helperText="Konto o podanym adresie email już istnieje."
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -103,11 +107,14 @@ export default function Page() {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <FormControlLabel
-                                    required
-                                    control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                    label="Akceptuję regulamin serwisu Bibliosfera."
-                                />
+                                {/*<FormControl error={true}>*/}
+                                    <FormControlLabel
+                                        required
+                                        control={<Checkbox value="allowExtraEmails" color="primary" />}
+                                        label="Akceptuję regulamin serwisu Bibliosfera."
+                                    />
+                                    {/*<FormHelperText>Aby się zarejestrować musisz zaakceptować regulamin.</FormHelperText>*/}
+                                {/*</FormControl>*/}
                             </Grid>
                         </Grid>
                         <Button

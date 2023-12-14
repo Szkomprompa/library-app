@@ -8,6 +8,8 @@ import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DemoContainer} from "@mui/x-date-pickers/internals/demo";
 import Button from "@mui/material/Button";
+import dayjs from "dayjs";
+import {CircularProgress} from "@mui/material";
 
 export default function History() {
     return (
@@ -23,14 +25,14 @@ export default function History() {
                         <Grid item xs>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DemoContainer components={['DateRangePicker']}>
-                                    <DatePicker label="Od" />
+                                    <DatePicker label="Od" maxDate={dayjs('2023-12-14')}/>
                                 </DemoContainer>
                             </LocalizationProvider>
                         </Grid>
                         <Grid item xs>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DemoContainer components={['DateRangePicker']}>
-                                    <DatePicker label="Do" />
+                                    <DatePicker label="Do" maxDate={dayjs('2023-12-14')}/>
                                 </DemoContainer>
                             </LocalizationProvider>
                         </Grid>
@@ -41,7 +43,9 @@ export default function History() {
                 </Toolbar>
             </AppBar>
             <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-                Historia wypożyczeń jest pusta.
+                {/*<CircularProgress />*/}
+                {/*Historia wypożyczeń jest pusta.*/}
+                Brak wypożyczeń w wybranym okresie.
             </Typography>
         </Paper>
     );
